@@ -20,6 +20,7 @@ export default function Navbar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      
       <ModeToggle></ModeToggle>
 
       
