@@ -1,12 +1,12 @@
-import { Button } from "./components/ui/button"
-
+import { Outlet } from "react-router"
+import Navbar from "./components/layout/Navbar"
 
 function App() {
   return (
     <>
       
-      <h1>Task Manager</h1>
-      <Button>Click Me</Button>
+      <Navbar></Navbar>
+      <Outlet/>
         
       
      
