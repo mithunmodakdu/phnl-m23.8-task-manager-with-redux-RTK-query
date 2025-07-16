@@ -16,6 +16,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {useForm } from "react-hook-form";
 
 export function AddTaskModal() {
@@ -34,27 +35,38 @@ export function AddTaskModal() {
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Add Task</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+            <DialogDescription className="sr-only">
+              Fill up the form to add task.
             </DialogDescription>
           </DialogHeader>
           <Form {...form} >
-            <form  onSubmit={form.handleSubmit(onSubmit)}>
+            <form className="space-y-5"  onSubmit={form.handleSubmit(onSubmit)}>
               <FormField
                 control={form.control}
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel/>
+                    <FormLabel>Title</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} value={field.value || ""} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Description</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Write description of task here..." {...field} value={field.value || ""} />
                     </FormControl>
                   </FormItem>
                 )}
               />
               <DialogFooter>
-                <Button type="submit">Save changes</Button>
+                <Button type="submit">Submit</Button>
               </DialogFooter>
             </form>
           </Form>
