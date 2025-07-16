@@ -15,7 +15,7 @@ interface IProps{
 
 export function TaskCard({task} : IProps) {
   return (
-    <Card className={cn("w-full max-w-sm", {
+    <Card className={cn("w-full", {
       "bg-green-500": task.priority === "Low",
       "bg-amber-400": task.priority === "Medium",
       "bg-red-500": task.priority === "High"
