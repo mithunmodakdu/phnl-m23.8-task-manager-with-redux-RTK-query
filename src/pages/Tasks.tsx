@@ -1,3 +1,4 @@
+import { TaskCard } from "@/components/module/tasks/TaskCard";
 import { selectFilter, selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hooks";
 
@@ -10,8 +11,10 @@ export default function Tasks() {
   console.log(filter)
 
   return (
-    <div>
-      Tasks Component
+    <div className="space-y-5 mx-auto w-1/2">
+      {
+        tasks.map((task) =>(<TaskCard task={task}></TaskCard>))
+      }
     </div>
   );
 }

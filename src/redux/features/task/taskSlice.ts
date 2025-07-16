@@ -16,6 +16,22 @@ const initialState : IInitialState = {
       dueDate: "2025-07-15",
       priority: "High",
       isCompleted: false,
+    },
+    {
+      id: "kmkumlklkkkjs",
+      title: "Develop fullstack website",
+      description: "Create navbar, footer, about section, and create router",
+      dueDate: "2025-07-15",
+      priority: "Low",
+      isCompleted: false,
+    },
+    {
+      id: "kmkumlkllllllll",
+      title: "Develop Backend",
+      description: "Create navbar, footer, about section, and create router",
+      dueDate: "2025-07-15",
+      priority: "Medium",
+      isCompleted: false,
     }
   ],
   filter: "all"
