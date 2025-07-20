@@ -8,9 +8,6 @@ import {
 } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils"
-import { deleteTask, toggleCompleteState } from "@/redux/features/task/taskSlice"
-import { selectUsers } from "@/redux/features/user/userSlice"
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import type { ITask } from "@/types"
 import { Trash2Icon } from "lucide-react"
 
@@ -19,9 +16,6 @@ interface IProps{
 }
 
 export function TaskCard({task} : IProps) {
-  const dispatch = useAppDispatch();
-  const users = useAppSelector(selectUsers);
-  const assignedUser = users.find(user => user.id === task.assignedTo);
 
   return (
     <Card className={cn("w-full", {
@@ -36,12 +30,12 @@ export function TaskCard({task} : IProps) {
           
          
         </CardDescription>
-        <CardDescription>Assigned to {assignedUser? assignedUser.name : "none"}</CardDescription>
+        <CardDescription>Assigned to {task.assignedTo}</CardDescription>
         <CardAction className="flex justify-center items-center gap-5">
-          <Button variant="link" onClick={() => dispatch(deleteTask(task.id))}>
+          <Button variant="link">
             <Trash2Icon className="ml-auto h-4 w-4 opacity-50" />
           </Button>
-          <Checkbox checked={task.isCompleted} onClick={() => dispatch(toggleCompleteState(task.id))} />
+          <Checkbox checked={task.isCompleted} />
         </CardAction>
       </CardHeader>
       

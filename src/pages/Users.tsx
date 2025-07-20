@@ -1,13 +1,8 @@
 import { AddUserModal } from "@/components/module/users/AddUserModal";
 import { UserCard } from "@/components/module/users/UserCard";
-import { selectUsers } from "@/redux/features/user/userSlice";
-import { useAppSelector } from "@/redux/hooks";
+
 
 export default function Users() {
-  const users = useAppSelector(selectUsers);
-  console.log(users);
-
-  // const dispatch = useAppDispatch();
 
   return (
     <>
