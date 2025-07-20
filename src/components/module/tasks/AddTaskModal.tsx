@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { useCreateTaskMutation } from "@/redux/api/baseApi";
 // import type { ITask } from "@/types";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
@@ -37,9 +38,19 @@ export function AddTaskModal() {
   const [open, setOpen] = useState(false);
   const form = useForm();
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
-    // dispatch(addTask(data as ITask));
+  const [createTask, {data, isLoading, isError}] = useCreateTaskMutation();
+
+  console.log("DATA", data)
+
+  const onSubmit: SubmitHandler<FieldValues> = async(data) => {
+    const taskData = {
+      ...data,
+      isCompleted: false
+    }
+    
+    const res = await createTask(taskData).unwrap();
+    console.log("INSIDE SUBMIT FUNCTION", res)
+
     setOpen(false);
     form.reset();
   };
